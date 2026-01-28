@@ -11,7 +11,7 @@
 ### Настройки Runner в проекте:
 На скриншоте ниже видно, что раннер успешно зарегистрирован, имеет тег `docker` и активен (зеленый статус).
 
-![Скриншот настроек раннера](screenshots/runner_active.png)
+![Скриншот настроек раннера](img/runner_active.png)
 
 ### Конфигурация Runner (config.toml):
 Для обеспечения работы режима Docker-in-Docker в файл конфигурации были внесены следующие правки:
@@ -19,7 +19,8 @@
 * Настроен проброс сокета: `volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]`.
 * Добавлен `extra_hosts` для связи с локальным доменом GitLab.
 
-![Скриншот config.toml](screenshots/runner_config.png)
+![Скриншот config.toml](img/runner_config.png)
+![Скриншот config.toml](img/runner_config_2.png)
 
 ---
 
