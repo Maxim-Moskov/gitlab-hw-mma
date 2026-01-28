@@ -20,6 +20,7 @@
 * Добавлен `extra_hosts` для связи с локальным доменом GitLab.
 
 ![Скриншот config.toml](img/runner_config.png)
+
 ![Скриншот config.toml](img/runner_config_2.png)
 
 ---
