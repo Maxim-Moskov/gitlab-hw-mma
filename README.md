@@ -25,5 +25,43 @@
 
 ---
 
-## Задание 2: Описание Pipeline (Опционально/Следующий этап)
-*Здесь вы сможете добавить описание вашего `.gitlab-ci.yml`, когда приступите ко второй части задания.*
+## Задание 2: Настройка CI/CD Pipeline
+
+### Описание решения:
+Создан файл `.gitlab-ci.yml` для автоматизации тестирования и сборки.
+Для решения проблем с сетевыми ограничениями и версиями API были применены следующие настройки:
+* Использование локальных образов через политику `pull_policy: [if-not-present]`.
+* Принудительное указание версии API: `DOCKER_API_VERSION: "1.41"`.
+* В `config.toml` раннера разрешены локальные политики (`allowed_pull_policies`).
+
+### Итоговый файл .gitlab-ci.yml:
+```yaml
+stages:
+  - test
+  - build
+
+variables:
+  DOCKER_API_VERSION: "1.41"
+
+test_job:
+  stage: test
+  image: 
+    name: golang:1.17
+    pull_policy: [if-not-present]
+  script:
+    - echo "Running tests..."
+    - go version
+
+build_job:
+  stage: build
+  image: 
+    name: docker:latest
+    pull_policy: [if-not-present]
+  script:
+    - echo "Checking Docker..."
+    - docker info
+    - echo "Building dummy image..."
+    - echo "FROM alpine:latest" > Dockerfile
+    - docker build -t my-test-image:local .
+
+![Скриншот config.toml](img/pipeline_success.png)
