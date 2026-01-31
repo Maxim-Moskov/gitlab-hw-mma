@@ -34,6 +34,8 @@
 * Принудительное указание версии API: `DOCKER_API_VERSION: "1.41"`.
 * В `config.toml` раннера разрешены локальные политики (`allowed_pull_policies`).
 
+![Скриншот config.toml](img/pipeline_success.png)
+
 ### Итоговый файл .gitlab-ci.yml:
 ```yaml
 stages:
@@ -64,4 +66,3 @@ build_job:
     - echo "FROM alpine:latest" > Dockerfile
     - docker build -t my-test-image:local .
 
-![Скриншот config.toml](img/pipeline_success.png)
